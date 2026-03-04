@@ -848,7 +848,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 	            <div class="d-flex justify-content-around">
 	            	<div>	            		
 	            		<label for="recipient-name" class="col-form-label text-dark" style="margin-bottom:-10px;">Amount:</label>
-		            	<input type="number" class="form-control total_amount" placeholder="amount" name="total_amount" autocomplete="off">
+		            	<input type="number" class="form-control" placeholder="amount" name="total_amount" autocomplete="off">
 		            </div>
 	            	<div>	            		
 	            		<label for="recipient-name" class="col-form-label text-dark" style="margin-bottom:-10px;">Discount:</label>
