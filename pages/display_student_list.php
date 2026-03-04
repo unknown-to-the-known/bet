@@ -1059,7 +1059,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 			        $('.negative_msg').show();
 			        $('.postive_msg').hide();
 			        $('.pay').hide();
-			        $('.payable_amount').val('');
+			        $('.total_amount, .payable_amount').val('');
 			        return;
 			    }
 
@@ -1076,8 +1076,8 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 			    // Convert to string without trailing zeros
 			    let payableText = parseFloat(payable.toFixed(10)).toString();
 
-			    $('.total_amount').val(payableText);
-			    $('.payable_amount').val(payableText);
+			    // $('.total_amount').val(payableText);
+			    // $('.payable_amount').val(payableText);
 
 			    $('.negative_msg, .postive_msg').hide();
 			    $('.pay').show();
