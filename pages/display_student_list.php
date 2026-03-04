@@ -1045,7 +1045,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 
             let formattedName = amount_name.replace(/_/g, ' ');
             modalTitle.textContent = `${student_name} Payment Page`;
-            modalBodyInput.value = total_amount;
+            // modalBodyInput.value = total_amount;
             modalBodyInput_student_id.value = student_id;
             modalBodyInput_student_name.value = student_name;
             modalBodyInput_paying_to.value = amount_name;
@@ -1059,7 +1059,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 			        $('.negative_msg').show();
 			        $('.postive_msg').hide();
 			        $('.pay').hide();
-			        $('.payable_amount').val('');
+			        $('.total_amount, .payable_amount').val('');
 			        return;
 			    }
 
