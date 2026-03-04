@@ -856,7 +856,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 		            </div>
 		            <div>
 		            	<label for="recipient-name" class="col-form-label text-dark" style="margin-bottom:-10px;">Receipt No.</label>
-		            	<input type="text" class="form-control" placeholder="Receipt No." name="receipt_no" value="<?php echo $new_bill_number; ?>" disabled>
+		            	<input type="text" class="form-control" placeholder="Receipt No." name="receipt_no" value="<?php echo $new_bill_number; ?>" readonly>
 		          	</div>
 	            </div>
 
