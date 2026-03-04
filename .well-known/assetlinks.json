@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.revisewellteachers.www",
+               "sha256_cert_fingerprints": ["23:6A:F0:10:53:03:5D:66:57:55:CD:64:DF:5C:B9:BA:5B:C0:25:67:7D:00:5F:DF:D1:6A:28:38:65:5C:13:21"] }
+}]

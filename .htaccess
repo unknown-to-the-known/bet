@@ -1,0 +1,23 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+ErrorDocument 404 /404/404.html
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW SSL_REDIRECT:yellotickets.website
+
+#RewriteEngine On
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE SSL_REDIRECT:yellotickets.website
+
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW UPGRADE_INSECURE_REQUESTS:revisewell.com
+Header always set Content-Security-Policy: upgrade-insecure-requests
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW UPGRADE_INSECURE_REQUESTS:revisewell.com
+
+
+# BROWSER CACHING USING EXPIRES HEADERS
+#php_value upload_max_filesize 30M
+
+
