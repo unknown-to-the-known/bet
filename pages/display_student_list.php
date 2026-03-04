@@ -409,7 +409,18 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 	} 
 ?>
 
-<!--  -->
+<!-- Fetch last successfull bill number -->
+<?php 
+	$fetch_bill_number = mysqli_query($connection, "SELECT * FROM erp_bill WHERE rev_sts = '1'");
+
+	if (mysqli_num_rows($fetch_bill_number) > 0) {
+		while($kk = mysqli_fetch_assoc($fetch_bill_number)) {
+			$last_bill_number = $kk['rev_bill_number'];
+		}
+	}
+
+	$new_bill_number = $last_bill_number + 1;
+?>
 
 <?php require ROOT_PATH . 'includes/header_after_login.php'; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -845,7 +856,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 		            </div>
 		            <div>
 		            	<label for="recipient-name" class="col-form-label text-dark" style="margin-bottom:-10px;">Receipt No.</label>
-		            	<input type="text" class="form-control" placeholder="Receipt No." name="receipt_no" value="10">
+		            	<input type="text" class="form-control" placeholder="Receipt No." name="receipt_no" value="<?php echo $new_bill_number; ?>">
 		          	</div>
 	            </div>
 
