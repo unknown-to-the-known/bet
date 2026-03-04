@@ -259,7 +259,6 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 
 					// Books
 							if ($paying_to == "book") {
-						// echo 'ok';
 									$select_term_full_fee = mysqli_query($connection, "SELECT * FROM rev_erp_student_details WHERE tree_id = '$paying_student_id' AND rev_sts = '1'");
 
 									if (mysqli_num_rows($select_term_full_fee) > 0) {
@@ -409,6 +408,8 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 		} 
 	} 
 ?>
+
+<!--  -->
 
 <?php require ROOT_PATH . 'includes/header_after_login.php'; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -844,7 +845,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 		            </div>
 		            <div>
 		            	<label for="recipient-name" class="col-form-label text-dark" style="margin-bottom:-10px;">Receipt No.</label>
-		            	<input type="text" class="form-control" placeholder="Receipt No." name="receipt_no" value="">
+		            	<input type="text" class="form-control" placeholder="Receipt No." name="receipt_no" value="10">
 		          	</div>
 	            </div>
 
