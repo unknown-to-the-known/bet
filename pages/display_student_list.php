@@ -56,8 +56,7 @@
     return substr($shuffled, 0, $length);
 }
 
-$uniq_id = generateUniqueRandomAlphabets(32);
-	
+$uniq_id = generateUniqueRandomAlphabets(32);	
 
 	if (isset($_POST['cash'])) {		
 		$today_date = date('Y-m-d H:i');		
@@ -261,38 +260,38 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 					// Books
 							if ($paying_to == "book") {
 						// echo 'ok';
-						$select_term_full_fee = mysqli_query($connection, "SELECT * FROM rev_erp_student_details WHERE tree_id = '$paying_student_id' AND rev_sts = '1'");
+									$select_term_full_fee = mysqli_query($connection, "SELECT * FROM rev_erp_student_details WHERE tree_id = '$paying_student_id' AND rev_sts = '1'");
 
-						if (mysqli_num_rows($select_term_full_fee) > 0) {
-							while($term_full_data = mysqli_fetch_assoc($select_term_full_fee)) {
-								// $old_term_full_data = $term_full_data['rev_fees'];
-								$total_fee = $term_full_data['rev_books'];
-							}
+									if (mysqli_num_rows($select_term_full_fee) > 0) {
+										while($term_full_data = mysqli_fetch_assoc($select_term_full_fee)) {
+											// $old_term_full_data = $term_full_data['rev_fees'];
+											$total_fee = $term_full_data['rev_books'];
+										}
 
-							if ($paying_amount > $total_fee) {
-								$error_message = "Paying amount is more than required amount";
-							}
+										if ($paying_amount > $total_fee) {
+											$error_message = "Paying amount is more than required amount";
+										}
 
-							if (!isset($error_message)) {
-								// $new_term_2 = $old_term2_data - ($paying_amount + $paying_discount);
-								$new_total_fee = $total_fee - ($paying_amount + $paying_discount);
+										if (!isset($error_message)) {
+											// $new_term_2 = $old_term2_data - ($paying_amount + $paying_discount);
+											$new_total_fee = $total_fee - ($paying_amount + $paying_discount);
 
-							// $update_term_2 = mysqli_query($connection, "UPDATE rev_erp_student_details SET rev_books = 'new_total_fee', rev_term1_fee = '0', rev_fees = '$new_total_fee' WHERE tree_id = '$paying_student_id'");
+										// $update_term_2 = mysqli_query($connection, "UPDATE rev_erp_student_details SET rev_books = 'new_total_fee', rev_term1_fee = '0', rev_fees = '$new_total_fee' WHERE tree_id = '$paying_student_id'");
 
-							$insert_into_bill_section = "INSERT INTO erp_bill(rev_student_id,rev_bill_number,rev_paid_to,rev_amount,rev_paid_on,rev_sts, rev_discount,rev_academic_year,erp_mode,erp_note) VALUES('$paying_student_id', '$paying_receipt','rev_books', '$paying_amount', '$just_date', '1', '$paying_discount', '$academic_setter', '$paying_utr','$erp_note')";
+										$insert_into_bill_section = "INSERT INTO erp_bill(rev_student_id,rev_bill_number,rev_paid_to,rev_amount,rev_paid_on,rev_sts, rev_discount,rev_academic_year,erp_mode,erp_note) VALUES('$paying_student_id', '$paying_receipt','rev_books', '$paying_amount', '$just_date', '1', '$paying_discount', '$academic_setter', '$paying_utr','$erp_note')";
 
-							if (mysqli_query($connection, $insert_into_bill_section)) {
-									  $last_id = mysqli_insert_id($connection);
+										if (mysqli_query($connection, $insert_into_bill_section)) {
+												  $last_id = mysqli_insert_id($connection);
+											}
+
+
+											$update = mysqli_query($connection, "UPDATE rev_erp_student_details SET rev_books = '$new_total_fee' WHERE tree_id = '$paying_student_id' AND rev_sts = '1'");
+
+										$insert = mysqli_query($connection,"INSERT INTO erp_payment_details(rev_student_id,rev_paid_to,	rev_payment_mode,rev_payment_amount,rev_discount,rev_recept_id,rev_utr_id,rev_paid_date_time,rev_sts, rev_order_id, rev_school_id) VALUES ('$paying_student_id', '$paying_to', 'admin_account', '$paying_amount', '$paying_discount', '$paying_receipt', '$paying_utr', '$today_date', '1', '$order_id', '$school_id')");
+											header("Location: " . BASE_URL . 'pages/bill_generator?id=' . $last_id);
+										}
+									}
 								}
-
-
-								$update = mysqli_query($connection, "UPDATE rev_erp_student_details SET rev_books = '$new_total_fee' WHERE tree_id = '$paying_student_id' AND rev_sts = '1'");
-
-							$insert = mysqli_query($connection,"INSERT INTO erp_payment_details(rev_student_id,rev_paid_to,	rev_payment_mode,rev_payment_amount,rev_discount,rev_recept_id,rev_utr_id,rev_paid_date_time,rev_sts, rev_order_id, rev_school_id) VALUES ('$paying_student_id', '$paying_to', 'admin_account', '$paying_amount', '$paying_discount', '$paying_receipt', '$paying_utr', '$today_date', '1', '$order_id', '$school_id')");
-								header("Location: " . BASE_URL . 'pages/bill_generator?id=' . $last_id);
-							}
-						}
-					}
 
 
 					// Trans
