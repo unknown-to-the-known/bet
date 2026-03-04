@@ -1067,7 +1067,7 @@ $uniq_id = generateUniqueRandomAlphabets(32);
 			        $('.postive_msg').show();
 			        $('.negative_msg').hide();
 			        $('.pay').hide();
-			        $('.total_amount, .payable_amount').val('');
+			        $('.payable_amount').val('');
 			        return;
 			    }
 
